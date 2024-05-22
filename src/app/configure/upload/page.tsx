@@ -103,7 +103,7 @@ const Page = () => {
                 )}
               </div>
 
-              {isPending ? null : (
+              {!isPending && (
                 <p className='text-xs text-zinc-500'>PNG, JPG, JPEG</p>
               )}
             </div>

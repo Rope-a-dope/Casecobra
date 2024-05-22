@@ -118,7 +118,7 @@ function ReviewGrid() {
     <div
       ref={containerRef}
       className='relative -mx-4 mt-16 grid h-[49rem] max-h-[150vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 sm:mt-20 md:grid-cols-2 lg:grid-cols-3'>
-      {isInView ? (
+      {isInView && (
         <>
           <ReviewColumn
             reviews={[...column1, ...column3.flat(), ...column2]}
@@ -140,11 +140,11 @@ function ReviewGrid() {
           />
           <ReviewColumn
             reviews={column3.flat()}
-            className='hidden md:block'
+            className='hidden lg:block'
             msPerPixel={10}
           />
         </>
-      ) : null}
+      ) }
       <div className='pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-slate-100' />
       <div className='pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-100' />
     </div>

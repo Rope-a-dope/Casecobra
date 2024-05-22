@@ -80,7 +80,7 @@ const Steps = () => {
               </span>
 
               {/* separator */}
-              {i !== 0 ? (
+              {i !== 0 && (
                 <div className='absolute inset-0 hidden w-3 lg:block'>
                   <svg
                     className='h-full w-full text-gray-300'
@@ -94,7 +94,7 @@ const Steps = () => {
                     />
                   </svg>
                 </div>
-              ) : null}
+              )}
             </div>
           </li>
         )

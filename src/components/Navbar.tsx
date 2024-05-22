@@ -29,7 +29,7 @@ const Navbar = async () => {
                   })}>
                   Sign out
                 </Link>
-                {isAdmin ? (
+                {isAdmin && (
                   <Link
                     href='/dashboard'
                     className={buttonVariants({
@@ -38,7 +38,7 @@ const Navbar = async () => {
                     })}>
                     Dashboard ✨
                   </Link>
-                ) : null}
+                )}
                 <Link
                   href='/configure/upload'
                   className={buttonVariants({
