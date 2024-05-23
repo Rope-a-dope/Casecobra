@@ -6,7 +6,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn, formatPrice } from '@/lib/utils'
 import NextImage from 'next/image'
 import { Rnd } from 'react-rnd'
-import { RadioGroup } from '@headlessui/react'
+import { RadioGroup, Radio, Description, Label as RadioLabel } from '@headlessui/react'
 import { useRef, useState } from 'react'
 import {
   COLORS,
@@ -163,6 +163,8 @@ const DesignConfigurator = ({
             className='pointer-events-none relative z-50 aspect-[896/1831] w-full'>
             <NextImage
               fill
+              sizes="auto"
+              priority
               alt='phone image'
               src='/phone-template.png'
               className='pointer-events-none z-50 select-none'
@@ -208,6 +210,7 @@ const DesignConfigurator = ({
             <NextImage
               src={imageUrl}
               fill
+              sizes="auto"
               alt='your image'
               className='pointer-events-none'
             />
@@ -242,14 +245,14 @@ const DesignConfigurator = ({
                   <Label>Color: {options.color.label}</Label>
                   <div className='mt-3 flex items-center space-x-3'>
                     {COLORS.map((color) => (
-                      <RadioGroup.Option
+                      <Radio
                         key={color.label}
                         value={color}
-                        className={({ active, checked }) =>
+                        className={({ disabled, checked }) =>
                           cn(
                             'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-transparent',
                             {
-                              [`border-${color.tw}`]: active || checked,
+                              [`border-${color.tw}`]: disabled || checked,
                             }
                           )
                         }>
@@ -259,7 +262,7 @@ const DesignConfigurator = ({
                             'h-8 w-8 rounded-full border border-black border-opacity-10'
                           )}
                         />
-                      </RadioGroup.Option>
+                      </Radio>
                     ))}
                   </div>
                 </RadioGroup>
@@ -321,45 +324,45 @@ const DesignConfigurator = ({
                       </Label>
                       <div className='mt-3 space-y-4'>
                         {selectableOptions.map((option) => (
-                          <RadioGroup.Option
+                          <Radio
                             key={option.value}
                             value={option}
-                            className={({ active, checked }) =>
+                            className={({ disabled, checked }) =>
                               cn(
                                 'relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between',
                                 {
-                                  'border-primary': active || checked,
+                                  'border-primary': disabled || checked,
                                 }
                               )
                             }>
                             <span className='flex items-center'>
                               <span className='flex flex-col text-sm'>
-                                <RadioGroup.Label
+                                <RadioLabel
                                   className='font-medium text-gray-900'
                                   as='span'>
                                   {option.label}
-                                </RadioGroup.Label>
+                                </RadioLabel>
 
-                                {option.description ? (
-                                  <RadioGroup.Description
+                                {option.description && (
+                                  <Description
                                     as='span'
                                     className='text-gray-500'>
                                     <span className='block sm:inline'>
                                       {option.description}
                                     </span>
-                                  </RadioGroup.Description>
-                                ) : null}
+                                  </Description>
+                                )}
                               </span>
                             </span>
 
-                            <RadioGroup.Description
+                            <Description
                               as='span'
                               className='mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right'>
                               <span className='font-medium text-gray-900'>
                                 {formatPrice(option.price / 100)}
                               </span>
-                            </RadioGroup.Description>
-                          </RadioGroup.Option>
+                            </Description>
+                          </Radio>
                         ))}
                       </div>
                     </RadioGroup>
