@@ -8,19 +8,9 @@ import NextImage from 'next/image'
 import { Rnd } from 'react-rnd'
 import { RadioGroup, Radio, Description, Label as RadioLabel } from '@headlessui/react'
 import { useRef, useState } from 'react'
-import {
-  COLORS,
-  FINISHES,
-  MATERIALS,
-  MODELS,
-} from '@/validators/option-validator'
+import { COLORS, FINISHES, MATERIALS, MODELS } from '@/validators/option-validator'
 import { Label } from '@/components/ui/label'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Check, ChevronsUpDown } from 'lucide-react'
 import { BASE_PRICE } from '@/config/products'
@@ -248,11 +238,11 @@ const DesignConfigurator = ({
                       <Radio
                         key={color.label}
                         value={color}
-                        className={({ disabled, checked }) =>
+                        className={({ checked }) =>
                           cn(
                             'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-transparent',
                             {
-                              [`border-${color.tw}`]: disabled || checked,
+                              [`border-${color.tw}`]: checked,
                             }
                           )
                         }>
@@ -327,11 +317,11 @@ const DesignConfigurator = ({
                           <Radio
                             key={option.value}
                             value={option}
-                            className={({ disabled, checked }) =>
+                            className={({ checked }) =>
                               cn(
                                 'relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between',
                                 {
-                                  'border-primary': disabled || checked,
+                                  'border-primary': checked,
                                 }
                               )
                             }>
