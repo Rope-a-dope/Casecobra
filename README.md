@@ -32,7 +32,9 @@ and copy the .env.example variables into a separate .env file, fill them out & a
 
 I fixed some bugs and updated deprecated components. So if you want to start with mine update, run
 
+```bash
 git clone https://github.com/Rope-a-dope/casecobra.git
+```
 
 ## Acknowledgements
 
